@@ -11,7 +11,7 @@
                Placeholder="Enter Description"/>
         <Button Text="Add Category"
                 x:Name="btnAddCategory"
-                Clicked="BtnAddCategory_Clicked"/>
+               Clicked="BtnAddCategory_Clicked"/>
         <ListView x:Name="listViewCategories">
             <ListView.ItemTemplate>
                 <DataTemplate>

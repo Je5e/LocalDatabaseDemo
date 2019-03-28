@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.IO;
 
 namespace LocalDatabaseDemo
 {
@@ -18,7 +19,27 @@ namespace LocalDatabaseDemo
 
         private void BtnAddCategory_Clicked(object sender, EventArgs e)
         {
+            Category NewCategory = new Category
+            {
+                CategoryName = nameEntry.Text,
+                Description = descriptionEntry.Text
+            };
 
+            //  Registrar en la tabla Categories
+
+            // Obtener la ruta del archivo de la base de datos.
+            string DBFilePath =
+                Path.Combine(Environment.GetFolderPath
+                (Environment.SpecialFolder.LocalApplicationData), 
+                "NewDB.db3");
+            // Utilizar Database class
+            Database Database = new Database(DBFilePath);
+          int Result =  Database.InsertCategory(NewCategory);
+            if (Result > 0)
+            {
+                DisplayAlert
+                    ("Registro", $"CategoryID: {NewCategory.CategoryID}", "Ok");
+            }
         }
     }
 }
