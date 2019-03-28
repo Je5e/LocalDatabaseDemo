@@ -14,7 +14,7 @@ namespace LocalDatabaseDemo
         {
             InitializeComponent();
 
-           
+            LoadCategories();
         }
 
         private void BtnAddCategory_Clicked(object sender, EventArgs e)
@@ -40,6 +40,24 @@ namespace LocalDatabaseDemo
                 DisplayAlert
                     ("Registro", $"CategoryID: {NewCategory.CategoryID}", "Ok");
             }
+
+            LoadCategories();
+        }
+
+        private void LoadCategories()
+        {
+            // Obtener la ruta del archivo de la base de datos.
+            string DBFilePath =
+                Path.Combine(Environment.GetFolderPath
+                (Environment.SpecialFolder.LocalApplicationData),
+                "NewDB.db3");
+
+            Database Database = new Database(DBFilePath);
+
+            List<Category> Categories = new List<Category>();
+            Categories = Database.GetCategories();
+
+            listViewCategories.ItemsSource = Categories;
         }
     }
 }
