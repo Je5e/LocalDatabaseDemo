@@ -42,6 +42,8 @@ namespace LocalDatabaseDemo
             }
 
             LoadCategories();
+
+            
         }
 
         private void LoadCategories()
