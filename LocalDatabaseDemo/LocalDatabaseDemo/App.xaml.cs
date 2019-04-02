@@ -10,8 +10,8 @@ namespace LocalDatabaseDemo
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            
+            MainPage = new DeletePage();
         }
 
         protected override void OnStart()

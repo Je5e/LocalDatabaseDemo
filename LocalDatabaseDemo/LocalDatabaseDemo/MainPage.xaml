@@ -15,7 +15,8 @@
         <ListView x:Name="listViewCategories">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding CategoryName}"/>
+                    <TextCell Text="{Binding CategoryName}"
+                              Detail="{Binding CategoryID}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

@@ -18,6 +18,8 @@ namespace LocalDatabaseDemo
 			InitializeComponent ();
 		}
 
+        Category categoryFinded= new Category();
+
         private void BtnFind_Clicked(object sender, EventArgs e)
         {
             string DBFilePath =
@@ -27,7 +29,7 @@ namespace LocalDatabaseDemo
 
             Database database = new Database(DBFilePath);
 
-            Category categoryFinded = new Category();
+           
             int categoryID =int.Parse( CategoryIDEntry.Text);
             categoryFinded = database.GetCategoryByID(categoryID);
 
@@ -37,7 +39,18 @@ namespace LocalDatabaseDemo
 
         private void BtnDelete_Clicked(object sender, EventArgs e)
         {
+            string DBFilePath =
+               Path.Combine(Environment.GetFolderPath
+               (Environment.SpecialFolder.LocalApplicationData),
+               "NewDB.db3");
 
+            Database database = new Database(DBFilePath);
+
+            int Result = database.DeleteCategory(categoryFinded);
+            if (Result > 0)
+            {
+                DisplayAlert("Delete", "Categoria eliminada exitosamente", "Ok");
+            }
         }
     }
 }
