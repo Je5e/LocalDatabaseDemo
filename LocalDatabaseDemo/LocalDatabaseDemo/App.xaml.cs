@@ -11,7 +11,7 @@ namespace LocalDatabaseDemo
         {
             InitializeComponent();
             
-            MainPage = new DeletePage();
+            MainPage = new UpdatePage();
         }
 
         protected override void OnStart()

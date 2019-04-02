@@ -12,6 +12,21 @@
                         x:Name="btnFind"
                         Clicked="BtnFind_Clicked"/>
             </StackLayout>
+            <Label Text="DATOS DE CATEGORIA:"
+                   FontAttributes="Bold"
+                   FontSize="Medium"/>
+            <Label Text="ID:"/>
+            <Entry x:Name="CategoryIDFindedEntry"/>
+            
+            <Label Text="Name:"/>
+            <Entry x:Name="CategoryNameFindedEntry"/>
+
+            <Label Text="Description:"/>
+            <Entry x:Name="CategoryDesFindedEntry"/>
+            
+            <Button Text="Update"
+                    x:Name="btnUpdateCategory"
+                    Clicked="BtnUpdateCategory_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
