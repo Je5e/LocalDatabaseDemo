@@ -56,6 +56,8 @@ namespace LocalDatabaseDemo
             Database _database = new Database(DBFilePath);
 
             int Result = _database.UpdateCategory(categoryUpdated);
+            if (Result > 0)
+                DisplayAlert("Message", "Category Updated!", "Ok");
         }
     }
 }
