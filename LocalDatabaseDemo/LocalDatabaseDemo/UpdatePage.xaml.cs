@@ -17,17 +17,12 @@ namespace LocalDatabaseDemo
         private void BtnFind_Clicked(object sender, EventArgs e)
         {
             // Acceder a la base de datos.
-            string DBFilePath =
-                 Path.Combine(Environment.GetFolderPath
-                 (Environment.SpecialFolder.LocalApplicationData),
-                 "NewDB.db3");
-            Database _database = new Database(DBFilePath);
-
+           
             // Uso de los methods de la clase Database.
             int categoryID = int.Parse(CategoryIDEntry.Text);
             Category category;
 
-            category = _database.GetCategoryByID(categoryID);
+            category = App.DatabaseNorthWind.GetCategoryByID(categoryID);
             if (category == null)
             {
                 DisplayAlert("Message", $"No existe el ID:{categoryID}", "OK");
@@ -49,13 +44,8 @@ namespace LocalDatabaseDemo
                 Description = CategoryDesFindedEntry.Text
             };
             // Acceder a la base de datos.
-            string DBFilePath =
-                 Path.Combine(Environment.GetFolderPath
-                 (Environment.SpecialFolder.LocalApplicationData),
-                 "NewDB.db3");
-            Database _database = new Database(DBFilePath);
-
-            int Result = _database.UpdateCategory(categoryUpdated);
+          
+            int Result = App.DatabaseNorthWind.UpdateCategory(categoryUpdated);
             if (Result > 0)
                 DisplayAlert("Message", "Category Updated!", "Ok");
         }

@@ -22,16 +22,9 @@ namespace LocalDatabaseDemo
 
         private void BtnFind_Clicked(object sender, EventArgs e)
         {
-            string DBFilePath =
-                Path.Combine(Environment.GetFolderPath
-                (Environment.SpecialFolder.LocalApplicationData),
-                "NewDB.db3");
-
-            Database database = new Database(DBFilePath);
-
-           
+            
             int categoryID =int.Parse( CategoryIDEntry.Text);
-            categoryFinded = database.GetCategoryByID(categoryID);
+            categoryFinded = App.DatabaseNorthWind.GetCategoryByID(categoryID);
 
             lblCategoryID.Text = categoryFinded.CategoryID.ToString();
             lblCategoryName.Text = categoryFinded.CategoryName;
@@ -39,14 +32,7 @@ namespace LocalDatabaseDemo
 
         private void BtnDelete_Clicked(object sender, EventArgs e)
         {
-            string DBFilePath =
-               Path.Combine(Environment.GetFolderPath
-               (Environment.SpecialFolder.LocalApplicationData),
-               "NewDB.db3");
-
-            Database database = new Database(DBFilePath);
-
-            int Result = database.DeleteCategory(categoryFinded);
+            int Result = App.DatabaseNorthWind.DeleteCategory(categoryFinded);
             if (Result > 0)
             {
                 DisplayAlert("Delete", "Categoria eliminada exitosamente", "Ok");

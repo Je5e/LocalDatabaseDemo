@@ -28,13 +28,10 @@ namespace LocalDatabaseDemo
             //  Registrar en la tabla Categories
 
             // Obtener la ruta del archivo de la base de datos.
-            string DBFilePath =
-                Path.Combine(Environment.GetFolderPath
-                (Environment.SpecialFolder.LocalApplicationData), 
-                "NewDB.db3");
+           
             // Utilizar Database class
-            Database Database = new Database(DBFilePath);
-          int Result =  Database.InsertCategory(NewCategory);
+           
+          int Result =  App.DatabaseNorthWind.InsertCategory(NewCategory);
             if (Result > 0)
             {
                 DisplayAlert
@@ -49,15 +46,9 @@ namespace LocalDatabaseDemo
         private void LoadCategories()
         {
             // Obtener la ruta del archivo de la base de datos.
-            string DBFilePath =
-                Path.Combine(Environment.GetFolderPath
-                (Environment.SpecialFolder.LocalApplicationData),
-                "NewDB.db3");
-
-            Database Database = new Database(DBFilePath);
-
+            
             List<Category> Categories = new List<Category>();
-            Categories = Database.GetCategories();
+            Categories = App.DatabaseNorthWind.GetCategories();
 
             listViewCategories.ItemsSource = Categories;
         }
